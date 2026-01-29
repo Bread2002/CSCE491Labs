@@ -1,0 +1,8 @@
+main.c:23:main(): read a waves file with 6 signals and 2243 samples
+main.c:24:main(): input has these signals:
+main.c:30:main(): 	* sclk (1 bits)
+main.c:30:main(): 	* mosi (1 bits)
+main.c:30:main(): 	* miso (1 bits)
+main.c:30:main(): 	* ss (1 bits)
+main.c:30:main(): 	* cpol (1 bits)
+main.c:30:main(): 	* cpha (1 bits)
