@@ -77,11 +77,38 @@ for i in range(w.samples()):
 sys.stderr.write("\n\n{}".format(mosiList))
 #sys.stderr.write("\n\n{}".format(misoList))
 
-count = 0
+## Binary to Hex Converter
+def Hex(binary):
+    return f"{int(binary, 2):02x}"
+    
+## Removes the leftover bits
+limit = (len(mosiList) // 16) * 16
 
-address = mosiList[count:count+6]
-sys.stderr.write("\n\n{}".format(address))
-count = count +16
+## Function to print out Read/Write
+def RDWR(index):
+    if mosiList[index + 6] == "0":
+        return "RD"
+    elif mosiList[index+6] == "1":
+        return "WR"
+    else:
+        return "ERROR"
+
+## Main Loop
+for i in range(0, limit, 16):
+    address = mosiList[i : i + 6]
+    sys.stderr.write("\n\n{}".format(address))
+    
+    SIST = mosiList[i + 7]
+    sys.stderr.write("\n\n{}".format(SIST))
+    
+    if RDWR(i) == "RD":
+        data = mosiList[i + 7 : i + 16]
+    elif RDWR(i) == "WR":
+        data = misoList[i + 7 : i + 16]
+    
+    sys.stdout.write("{} {} {}\n".format(RDWR(i), Hex(address), Hex(data)))
+
+
 
 
 
