@@ -61,7 +61,6 @@ prevSclk = 0  # Track previous clock state to detect edges
 # Extract MOSI and MISO data based on SCLK edges
 for i in range(w.samples()):
     # Access signal values directly from the data structure
-    # w.data[i] is a tuple: (timestamp, signals_dict)
     sclkVal = w.data[i][1]["sclk"]
     mosiVal = w.data[i][1]["mosi"]
     misoVal = w.data[i][1]["miso"]
@@ -83,18 +82,54 @@ for i in range(w.samples()):
 # Remove any leftover bits
 limit = (len(mosiList) // 16) * 16
 
-# Main Loop
-for i in range(0, limit, 16):
+############ Main Loop ############
+i = 0
+while i < len(mosiList):
+    # Need at least 16 bits for header
+    if i + 16 > len(mosiList):
+        break
+        
     address = mosiList[i : i + 6]
     sys.stderr.write("\nAddress #{}: {}".format(i // 16 + 1, address))
     
-    SIST = mosiList[i + 6]
-    sys.stderr.write("\nSIST: {}".format(SIST))
+    rdwr = mosiList[i + 6]
+    sys.stderr.write("\nRDWR Bit: {}".format(rdwr))
     
-    if RDWR(i) == "RD":
-        data = misoList[i + 8 : i + 16]
-    elif RDWR(i) == "WR":
-        data = mosiList[i + 8 : i + 16]
-    
-    sys.stderr.write("\nExchange #{}: {}\n".format(i // 16 + 1, data))
-    sys.stdout.write("{} {} {}\n".format(RDWR(i), Hex(address), Hex(data)))
+    stream = mosiList[i + 7]
+    sys.stderr.write("\nStream Bit: {}".format(stream))
+
+    if stream == "0":
+        # Non-stream Mode: single 8-bit data exchanges
+        if RDWR(i) == "RD":
+            data = misoList[i + 8 : i + 16]
+        elif RDWR(i) == "WR":
+            data = mosiList[i + 8 : i + 16]
+        
+        sys.stderr.write("\nExchange: {}\n".format(data))
+        sys.stdout.write("{} {} {}\n".format(RDWR(i), Hex(address), Hex(data)))
+        i += 16  # Move past header (16 bits)
+    else:
+        # Stream Mode: read stream length from second exchange
+        streamLengthBinary = mosiList[i + 8 : i + 16]
+        streamLength = int(streamLengthBinary, 2)
+        sys.stderr.write("\nStream Length: {} (binary: {})\n".format(streamLength, streamLengthBinary))
+        
+        # Collect data array based on stream length
+        dataArray = []
+        for j in range(streamLength):
+            dataStart = i + 16 + (j * 8)
+            dataEnd = dataStart + 8
+            
+            if RDWR(i) == "RD":
+                dataByte = misoList[dataStart : dataEnd]
+            elif RDWR(i) == "WR":
+                dataByte = mosiList[dataStart : dataEnd]
+            
+            dataArray.append(Hex(dataByte))
+            sys.stderr.write("  Data[{}]: {} -> {}\n".format(j, dataByte, Hex(dataByte)))
+        
+        dataStr = " ".join(dataArray)
+        sys.stdout.write("{} STREAM {} {}\n".format(RDWR(i), Hex(address), dataStr))
+        
+        # Move past header (16 bits) + stream data (streamLength * 8 bits)
+        i += 16 + (streamLength * 8)
