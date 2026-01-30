@@ -1,7 +1,5 @@
-gcc -Wall -Wextra -pedantic -Wmisleading-indentation -Werror -std=gnu11 -g -Og -c main.c -o main.o -lm -I/share/jbakos/data/teaching/SHIC/labs/lab_spi/code/../utils/c_utils
-make CFLAGS="-Wall -Wextra -pedantic -Wmisleading-indentation -Werror -std=gnu11 -g -Og" CINCLUDE="-lm -I/share/jbakos/data/teaching/SHIC/labs/lab_spi/code/../utils/c_utils" CC="gcc" -C /share/jbakos/data/teaching/SHIC/labs/lab_spi/code/../utils/c_utils
-make[1]: Entering directory '/share/jbakos/data/teaching/SHIC/labs/lab_spi/utils/c_utils'
-gcc -Wall -Wextra -pedantic -Wmisleading-indentation -Werror -std=gnu11 -g -Og waves.c -c -lm -I/share/jbakos/data/teaching/SHIC/labs/lab_spi/code/../utils/c_utils
-make[1]: Leaving directory '/share/jbakos/data/teaching/SHIC/labs/lab_spi/utils/c_utils'
-cp /share/jbakos/data/teaching/SHIC/labs/lab_spi/code/../utils/c_utils/waves.o ./
-gcc -Wall -Wextra -pedantic -Wmisleading-indentation -Werror -std=gnu11 -g -Og main.o waves.o -lm -I/share/jbakos/data/teaching/SHIC/labs/lab_spi/code/../utils/c_utils -o a.out
+if -e ./requirements.txt ; then pip install -r ./requirements.txt ; fi
+echo '#!/bin/sh' > a.out
+echo 'python3 main.py' >> a.out
+echo 'exit $?' >> a.out
+chmod +x a.out

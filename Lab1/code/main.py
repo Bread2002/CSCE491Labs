@@ -33,8 +33,119 @@ w.loadText(sys.stdin.read())
 # Display some information about it. We can use sys.stderr.write() to send a
 # log message to standard error without it interfering with the data we
 # send to standard out for grade.sh to interpret.
+
+
 sys.stderr.write("read a waves file with {} signals and {} samples\n".format(len(w.signals()), w.samples()))
 sys.stderr.write("input has these signals:\n")
-for s in w.signals():
-    sys.stderr.write("\t* {} ({} bits)\n".format(s, w.sizes[s]))
+##for s in w.signals():
+    ##sys.stderr.write("\t* {} ({} bits)\n".format(s, w.sizes[s])) 
+   
+   
+"""
+def LongString(column):
+    result = ""
+    for i in range(w.samples()):
+        edge_time = 0 if i == 0 else 1000.0 + (i-1) * 50
+        
+        # This adds the quotes needed for the tool's internal lookup
+        columnName = f'"{column}"' 
+        val = w.signalAt(columnName, edge_time)
+        
+        result += str(val)
+        sys.stderr.write(str(val))
+    return result
+"""    
+
+
+mosiList = ""
+misoList = ""
+for i in range(w.samples()):
+    if i ==0:
+        edge_time = 0
+    else:
+        edge_time = 1000.0 + (i-1) * 50
+
+
+    mosiVal = w.signalAt("mosi", edge_time)
+    mosiList = mosiList + str(mosiVal)
+    
+    misoVal = w.signalAt("miso", edge_time)
+    misoList = misoList + str(misoVal)
+    
+    ##sys.stderr.write("{}".format(mosiVal))
+    ##sys.stderr.write("{}".format(misoVal))
+sys.stderr.write("\n\n{}".format(mosiList))
+#sys.stderr.write("\n\n{}".format(misoList))
+
+count = 0
+
+address = mosiList[count:count+6]
+sys.stderr.write("\n\n{}".format(address))
+count = count +16
+
+
+
+'''
+binary_str = "10101011"
+# Lowercase without 0x
+print(f"{int(binary_str, 2):x}")  # Output: 'ab'
+# Uppercase without 0x
+print(f"{int(binary_str, 2):X}")  # Output: 'AB'
+'''
+
+
+
+
+
+"""
+def FindEchoTime(sample):
+    for i in range(w.samples()):
+        if i ==0:
+            edge_time = 0
+        else:
+            edge_time = 1000.0 + (i-1) * 50
+    return edge_time
+    
+sys.stderr.write("value at edge:{}\n".format(FindEchoTime(w.samples())))
+ """   
+
+
+
+
+
+"""
+for i in range(w.samples()):
+    if i ==0:
+        edge_time = 0
+    else:
+        edge_time = 1000.0 + (i-1) * 50
+    
+for s in range(6):
+    val = w.signalAt("mosi", edge_time)
+    sys.stderr.write(",{}".format(val))
+
+# val = w.signalAt("mosi", 1000.0)
+# sys.stderr.write("value at edge:{}\n".format(val))
+"""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

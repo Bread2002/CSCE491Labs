@@ -1,5 +1,1 @@
-rm -f main.o waves.o a.out
-make -C /share/jbakos/data/teaching/SHIC/labs/lab_spi/code/../utils/c_utils clean
-make[1]: Entering directory '/share/jbakos/data/teaching/SHIC/labs/lab_spi/utils/c_utils'
-rm -f *.o
-make[1]: Leaving directory '/share/jbakos/data/teaching/SHIC/labs/lab_spi/utils/c_utils'
+rm -f a.out
