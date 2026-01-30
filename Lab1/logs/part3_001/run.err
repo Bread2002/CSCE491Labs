@@ -1,0 +1,8 @@
+Read a waves file with 6 signals and 7443 samples...
+Input has these signals:
+	* sclk (1 bits)
+	* mosi (1 bits)
+	* miso (1 bits)
+	* ss (1 bits)
+	* cpol (1 bits)
+	* cpha (1 bits)
