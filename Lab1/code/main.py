@@ -37,49 +37,42 @@ w.loadText(sys.stdin.read())
 
 sys.stderr.write("read a waves file with {} signals and {} samples\n".format(len(w.signals()), w.samples()))
 sys.stderr.write("input has these signals:\n")
-##for s in w.signals():
-    ##sys.stderr.write("\t* {} ({} bits)\n".format(s, w.sizes[s])) 
-   
-   
-"""
-def LongString(column):
-    result = ""
-    for i in range(w.samples()):
-        edge_time = 0 if i == 0 else 1000.0 + (i-1) * 50
-        
-        # This adds the quotes needed for the tool's internal lookup
-        columnName = f'"{column}"' 
-        val = w.signalAt(columnName, edge_time)
-        
-        result += str(val)
-        sys.stderr.write(str(val))
-    return result
-"""    
+for s in w.signals():
+    sys.stderr.write("\t* {} ({} bits)\n".format(s, w.sizes[s])) 
 
 
 mosiList = ""
 misoList = ""
+prevSclk = 0  # Track previous clock state to detect edges
+
+# Extract MOSI and MISO data based on SCLK edges
 for i in range(w.samples()):
-    if i ==0:
-        edge_time = 0
-    else:
-        edge_time = 1000.0 + (i-1) * 50
+    # Access signal values directly from the data structure
+    # w.data[i] is a tuple: (timestamp, signals_dict)
+    sclkVal = w.data[i][1]["sclk"]
+    mosiVal = w.data[i][1]["mosi"]
+    misoVal = w.data[i][1]["miso"]
+    ssVal = w.data[i][1]["ss"]
+    cpolVal = w.data[i][1]["cpol"]
+    cphaVal = w.data[i][1]["cpha"]
+    
+    # Only capture on rising edge of sclk (0->1) when ss is active (ss==0)
+    # This is for CPOL=0, CPHA=0 mode
+    if cpolVal == 0 and cphaVal == 0 and ssVal == 0 and sclkVal == 1 and prevSclk == 0:
+        mosiList = mosiList + str(mosiVal)
+        misoList = misoList + str(misoVal)
+    
+    prevSclk = sclkVal
 
 
-    mosiVal = w.signalAt("mosi", edge_time)
-    mosiList = mosiList + str(mosiVal)
-    
-    misoVal = w.signalAt("miso", edge_time)
-    misoList = misoList + str(misoVal)
-    
-    ##sys.stderr.write("{}".format(mosiVal))
-    ##sys.stderr.write("{}".format(misoVal))
-sys.stderr.write("\n\n{}".format(mosiList))
-#sys.stderr.write("\n\n{}".format(misoList))
 
 ## Binary to Hex Converter
 def Hex(binary):
     return f"{int(binary, 2):02x}"
+    
+## Binary to Decimal Converter
+def Decimal(binary):
+    return f"{int(binary, 2):02}"
     
 ## Removes the leftover bits
 limit = (len(mosiList) // 16) * 16
@@ -96,35 +89,73 @@ def RDWR(index):
 ## Main Loop
 for i in range(0, limit, 16):
     address = mosiList[i : i + 6]
-    sys.stderr.write("\n\n{}".format(address))
+    #sys.stderr.write("\n\n{}".format(address))
     
     SIST = mosiList[i + 7]
-    sys.stderr.write("\n\n{}".format(SIST))
+    #sys.stderr.write("\n\n{}".format(SIST))
     
-    if RDWR(i) == "RD":
-        data = mosiList[i + 7 : i + 16]
-    elif RDWR(i) == "WR":
-        data = misoList[i + 7 : i + 16]
-    
-    sys.stdout.write("{} {} {}\n".format(RDWR(i), Hex(address), Hex(data)))
-
-
-
-
+    ## Used if stream bit = 0
+    if SIST == 0:
+        if RDWR(i) == "RD":
+            data = misoList[i + 8 : i + 16]
+        elif RDWR(i) == "WR":
+            data = mosiList[i + 8 : i + 16]
+        
+        sys.stdout.write("{} {} {}\n".format(RDWR(i), Hex(address), Hex(data)))
+        
+    ##elif SIST == 1:
 
 '''
+
+def LongString(column):
+    result = ""
+    for i in range(w.samples()):
+        edge_time = 0 if i == 0 else 1000.0 + (i-1) * 50
+        
+        # This adds the quotes needed for the tool's internal lookup
+        columnName = f'"{column}"' 
+        val = w.signalAt(columnName, edge_time)
+        
+        result += str(val)
+        sys.stderr.write(str(val))
+    return result
+
+
+for i in range(w.samples()):
+    if i == 0:
+        edge_time = 0
+    else:
+        edge_time = 1000.0 + (i-1) * 50
+
+    ssVal = w.signalAt("ss", edge_time)
+    sclkVal = w.signalAt("sclk", edge_time)
+    if ssVal == 0 and sclkVal == 1:
+        mosiVal = w.signalAt("mosi", edge_time)
+        mosiList = mosiList + str(mosiVal)
+        
+        misoVal = w.signalAt("miso", edge_time)
+        misoList = misoList + str(misoVal)
+    
+    ##sys.stderr.write("{}".format(mosiVal))
+    ##sys.stderr.write("{}".format(misoVal))
+sys.stderr.write("\n\n{}".format(mosiList))
+#sys.stderr.write("\n\n{}".format(misoList))
+
+
+
+
 binary_str = "10101011"
 # Lowercase without 0x
 print(f"{int(binary_str, 2):x}")  # Output: 'ab'
 # Uppercase without 0x
 print(f"{int(binary_str, 2):X}")  # Output: 'AB'
-'''
 
 
 
 
 
-"""
+
+
 def FindEchoTime(sample):
     for i in range(w.samples()):
         if i ==0:
@@ -134,13 +165,13 @@ def FindEchoTime(sample):
     return edge_time
     
 sys.stderr.write("value at edge:{}\n".format(FindEchoTime(w.samples())))
- """   
+  
 
 
 
 
 
-"""
+
 for i in range(w.samples()):
     if i ==0:
         edge_time = 0
@@ -153,7 +184,8 @@ for s in range(6):
 
 # val = w.signalAt("mosi", 1000.0)
 # sys.stderr.write("value at edge:{}\n".format(val))
-"""
+'''
+
 
 
 
