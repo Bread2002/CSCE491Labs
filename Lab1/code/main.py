@@ -65,7 +65,6 @@ for i in range(w.samples()):
     prevSclk = sclkVal
 
 
-
 ## Binary to Hex Converter
 def Hex(binary):
     return f"{int(binary, 2):02x}"
@@ -76,6 +75,7 @@ def Decimal(binary):
     
 ## Removes the leftover bits
 limit = (len(mosiList) // 16) * 16
+sys.stderr.write("\n\n{}".format(limit))
 
 ## Function to print out Read/Write
 def RDWR(index):
@@ -87,23 +87,44 @@ def RDWR(index):
         return "ERROR"
 
 ## Main Loop
-for i in range(0, limit, 16):
+i = 0
+while i < len(mosiList):
+    # Need at least 16 bits for header
+    if i + 16 > len(mosiList):
+        break
     address = mosiList[i : i + 6]
-    #sys.stderr.write("\n\n{}".format(address))
+    sys.stderr.write("\n\n{}".format(address))
     
     SIST = mosiList[i + 7]
-    #sys.stderr.write("\n\n{}".format(SIST))
+    sys.stderr.write("\n\n{}".format(SIST))
     
     ## Used if stream bit = 0
-    if SIST == 0:
+    if SIST == "0":
         if RDWR(i) == "RD":
             data = misoList[i + 8 : i + 16]
         elif RDWR(i) == "WR":
             data = mosiList[i + 8 : i + 16]
         
         sys.stdout.write("{} {} {}\n".format(RDWR(i), Hex(address), Hex(data)))
+        i = i + 16
+    elif SIST == "1":
+        stream = mosiList[i + 8 : i + 16]
+        streamval = Decimal(stream)
+        sys.stdout.write("{} STREAM {} ".format(RDWR(i), Hex(address)))
+        RDWRval = RDWR(i)
+        i = i + 16
+        for j in range (int(streamval)):
+            if RDWRval == "RD":
+                data = misoList[i : i + 8]
+            elif RDWRval == "WR":
+                data = mosiList[i : i + 8]
+            sys.stdout.write("{} ".format(Hex(data)))
+            i = i + 8
+        sys.stdout.write("\n")
         
-    ##elif SIST == 1:
+        
+        if i > len(mosiList):
+            break
 
 '''
 
