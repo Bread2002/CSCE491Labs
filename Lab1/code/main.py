@@ -61,7 +61,15 @@ for i in range(w.samples()):
     if cpolVal == 0 and cphaVal == 0 and ssVal == 0 and sclkVal == 1 and prevSclk == 0:
         mosiList = mosiList + str(mosiVal)
         misoList = misoList + str(misoVal)
-    
+    if cpolVal == 0 and cphaVal == 1 and ssVal == 0 and sclkVal == 0 and prevSclk == 1:
+        mosiList = mosiList + str(mosiVal)
+        misoList = misoList + str(misoVal)
+    if cpolVal == 1 and cphaVal == 0 and ssVal == 0 and sclkVal == 0 and prevSclk == 1:
+        mosiList = mosiList + str(mosiVal)
+        misoList = misoList + str(misoVal)
+    if cpolVal == 1 and cphaVal == 1 and ssVal == 0 and sclkVal == 1 and prevSclk == 0:
+        mosiList = mosiList + str(mosiVal)
+        misoList = misoList + str(misoVal)
     prevSclk = sclkVal
 
 
@@ -86,17 +94,17 @@ def RDWR(index):
     else:
         return "ERROR"
 
-## Main Loop
+###################### Main Loop ######################
 i = 0
 while i < len(mosiList):
     # Need at least 16 bits for header
     if i + 16 > len(mosiList):
         break
     address = mosiList[i : i + 6]
-    sys.stderr.write("\n\n{}".format(address))
+    ##sys.stderr.write("\n\n{}".format(address))
     
     SIST = mosiList[i + 7]
-    sys.stderr.write("\n\n{}".format(SIST))
+    ##sys.stderr.write("\n\n{}".format(SIST))
     
     ## Used if stream bit = 0
     if SIST == "0":
@@ -110,7 +118,7 @@ while i < len(mosiList):
     elif SIST == "1":
         stream = mosiList[i + 8 : i + 16]
         streamval = Decimal(stream)
-        sys.stdout.write("{} STREAM {} ".format(RDWR(i), Hex(address)))
+        sys.stdout.write("{} STREAM {}".format(RDWR(i), Hex(address)))
         RDWRval = RDWR(i)
         i = i + 16
         for j in range (int(streamval)):
@@ -118,13 +126,11 @@ while i < len(mosiList):
                 data = misoList[i : i + 8]
             elif RDWRval == "WR":
                 data = mosiList[i : i + 8]
-            sys.stdout.write("{} ".format(Hex(data)))
+            sys.stdout.write(" {}".format(Hex(data)))
             i = i + 8
         sys.stdout.write("\n")
         
-        
-        if i > len(mosiList):
-            break
+
 
 '''
 
