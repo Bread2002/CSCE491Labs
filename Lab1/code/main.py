@@ -1,7 +1,9 @@
-# Copyright 2021 Jason Bakos, Philip Conrad, Charles Daniels
+# Copyright 2021, Jason Bakos, Philip Conrad, and Charles Daniels
 #
 # Part of the University of South Carolina CSCE491 course materials. Used by
 # instructors for test case generators. Do not redistribute.
+#
+# Copyright 2026, Rye Stahle-Smith and Tiffany Yu
 
 import sys
 import os
@@ -67,17 +69,19 @@ for i in range(w.samples()):
     ssVal = w.data[i][1]["ss"]
     cpolVal = w.data[i][1]["cpol"]
     cphaVal = w.data[i][1]["cpha"]
-    
-    # Only capture on rising edge of sclk (0->1) when ss is active (ss==0)
-    # This is for CPOL=0, CPHA=0 mode
-    if cpolVal == 0 and cphaVal == 0 and ssVal == 0 and sclkVal == 1 and prevSclk == 0:
+
+    # Only capture on appropriate clock edges based on CPOL and CPHA
+    if ((cpolVal == 0 and cphaVal == 0) or (cpolVal == 1 and cphaVal == 1)) and ssVal == 0 and sclkVal == 1 and prevSclk == 0:
+        mosiList = mosiList + str(mosiVal)
+        misoList = misoList + str(misoVal)
+    elif ((cpolVal == 0 and cphaVal == 1) or (cpolVal == 1 and cphaVal == 0)) and ssVal == 0 and sclkVal == 0 and prevSclk == 1:
         mosiList = mosiList + str(mosiVal)
         misoList = misoList + str(misoVal)
     
     prevSclk = sclkVal
 
-# sys.stderr.write("\nMOSI: {}\n".format(mosiList))
-# sys.stderr.write("\nMISO: {}\n".format(misoList))
+# sys.stderr.write("\n[DEBUG] MOSI: {}\n".format(mosiList))
+# sys.stderr.write("\n[DEBUG] MISO: {}\n".format(misoList))
     
 # Remove any leftover bits
 limit = (len(mosiList) // 16) * 16
