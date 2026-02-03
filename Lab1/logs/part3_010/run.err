@@ -1,0 +1,611 @@
+Read a waves file with 6 signals and 6771 samples...
+Input has these signals:
+	* sclk (1 bits)
+	* mosi (1 bits)
+	* miso (1 bits)
+	* ss (1 bits)
+	* cpol (1 bits)
+	* cpha (1 bits)
+
+Address #1: 000011
+RDWR Bit: 0
+Stream Bit: 1
+Stream Length: 2 (binary: 00000010)
+  Data[0]: 01001000 -> 48
+  Data[1]: 01000111 -> 47
+
+Address #3: 110000
+RDWR Bit: 0
+Stream Bit: 0
+Exchange: 10011010
+
+Address #4: 000101
+RDWR Bit: 1
+Stream Bit: 1
+Stream Length: 18 (binary: 00010010)
+  Data[0]: 11100011 -> e3
+  Data[1]: 11100010 -> e2
+  Data[2]: 01100110 -> 66
+  Data[3]: 01111110 -> 7e
+  Data[4]: 01111000 -> 78
+  Data[5]: 11000101 -> c5
+  Data[6]: 10011110 -> 9e
+  Data[7]: 10001011 -> 8b
+  Data[8]: 00000111 -> 07
+  Data[9]: 11010101 -> d5
+  Data[10]: 11001000 -> c8
+  Data[11]: 01000110 -> 46
+  Data[12]: 11101011 -> eb
+  Data[13]: 10010101 -> 95
+  Data[14]: 11001001 -> c9
+  Data[15]: 10000111 -> 87
+  Data[16]: 01010001 -> 51
+  Data[17]: 00001110 -> 0e
+
+Address #14: 110011
+RDWR Bit: 1
+Stream Bit: 1
+Stream Length: 9 (binary: 00001001)
+  Data[0]: 00100110 -> 26
+  Data[1]: 10111111 -> bf
+  Data[2]: 11000111 -> c7
+  Data[3]: 00101001 -> 29
+  Data[4]: 01000001 -> 41
+  Data[5]: 00010110 -> 16
+  Data[6]: 11000101 -> c5
+  Data[7]: 11111101 -> fd
+  Data[8]: 01000100 -> 44
+
+Address #19: 111001
+RDWR Bit: 1
+Stream Bit: 0
+Exchange: 11000100
+
+Address #20: 011110
+RDWR Bit: 0
+Stream Bit: 0
+Exchange: 11011110
+
+Address #21: 011001
+RDWR Bit: 1
+Stream Bit: 0
+Exchange: 00101110
+
+Address #22: 111000
+RDWR Bit: 0
+Stream Bit: 1
+Stream Length: 24 (binary: 00011000)
+  Data[0]: 01110011 -> 73
+  Data[1]: 11111111 -> ff
+  Data[2]: 00100110 -> 26
+  Data[3]: 01111010 -> 7a
+  Data[4]: 01011101 -> 5d
+  Data[5]: 10101101 -> ad
+  Data[6]: 11010101 -> d5
+  Data[7]: 00001001 -> 09
+  Data[8]: 10001101 -> 8d
+  Data[9]: 00011000 -> 18
+  Data[10]: 00111101 -> 3d
+  Data[11]: 01111100 -> 7c
+  Data[12]: 00101000 -> 28
+  Data[13]: 10001011 -> 8b
+  Data[14]: 11011000 -> d8
+  Data[15]: 10100101 -> a5
+  Data[16]: 10001010 -> 8a
+  Data[17]: 10101011 -> ab
+  Data[18]: 00011100 -> 1c
+  Data[19]: 00101000 -> 28
+  Data[20]: 00100001 -> 21
+  Data[21]: 00111011 -> 3b
+  Data[22]: 01001010 -> 4a
+  Data[23]: 00111001 -> 39
+
+Address #35: 000011
+RDWR Bit: 0
+Stream Bit: 0
+Exchange: 10001000
+
+Address #36: 000001
+RDWR Bit: 0
+Stream Bit: 0
+Exchange: 11111100
+
+Address #37: 101100
+RDWR Bit: 1
+Stream Bit: 0
+Exchange: 10011010
+
+Address #38: 100110
+RDWR Bit: 0
+Stream Bit: 0
+Exchange: 11000111
+
+Address #39: 011011
+RDWR Bit: 0
+Stream Bit: 0
+Exchange: 10010010
+
+Address #40: 011111
+RDWR Bit: 0
+Stream Bit: 0
+Exchange: 11100101
+
+Address #41: 011000
+RDWR Bit: 0
+Stream Bit: 1
+Stream Length: 15 (binary: 00001111)
+  Data[0]: 01111000 -> 78
+  Data[1]: 10110100 -> b4
+  Data[2]: 11110001 -> f1
+  Data[3]: 00011110 -> 1e
+  Data[4]: 00001001 -> 09
+  Data[5]: 10001101 -> 8d
+  Data[6]: 10110110 -> b6
+  Data[7]: 01101000 -> 68
+  Data[8]: 11110111 -> f7
+  Data[9]: 11010110 -> d6
+  Data[10]: 01010101 -> 55
+  Data[11]: 11111100 -> fc
+  Data[12]: 10100100 -> a4
+  Data[13]: 00011110 -> 1e
+  Data[14]: 00001000 -> 08
+
+Address #50: 111110
+RDWR Bit: 1
+Stream Bit: 1
+Stream Length: 6 (binary: 00000110)
+  Data[0]: 01100111 -> 67
+  Data[1]: 10110000 -> b0
+  Data[2]: 11101110 -> ee
+  Data[3]: 00110000 -> 30
+  Data[4]: 00100111 -> 27
+  Data[5]: 01001101 -> 4d
+
+Address #54: 000110
+RDWR Bit: 1
+Stream Bit: 1
+Stream Length: 3 (binary: 00000011)
+  Data[0]: 00101001 -> 29
+  Data[1]: 01010100 -> 54
+  Data[2]: 11100000 -> e0
+
+Address #56: 010001
+RDWR Bit: 0
+Stream Bit: 0
+Exchange: 10011011
+
+Address #57: 111001
+RDWR Bit: 1
+Stream Bit: 0
+Exchange: 01110000
+
+Address #58: 011110
+RDWR Bit: 0
+Stream Bit: 0
+Exchange: 00100111
+
+Address #59: 101001
+RDWR Bit: 1
+Stream Bit: 1
+Stream Length: 26 (binary: 00011010)
+  Data[0]: 01000110 -> 46
+  Data[1]: 00100000 -> 20
+  Data[2]: 00000000 -> 00
+  Data[3]: 11000000 -> c0
+  Data[4]: 01000011 -> 43
+  Data[5]: 00010100 -> 14
+  Data[6]: 01000110 -> 46
+  Data[7]: 11111101 -> fd
+  Data[8]: 10001101 -> 8d
+  Data[9]: 01100010 -> 62
+  Data[10]: 01110111 -> 77
+  Data[11]: 00101000 -> 28
+  Data[12]: 10100001 -> a1
+  Data[13]: 11100100 -> e4
+  Data[14]: 11110010 -> f2
+  Data[15]: 00111101 -> 3d
+  Data[16]: 00011011 -> 1b
+  Data[17]: 00110101 -> 35
+  Data[18]: 01100111 -> 67
+  Data[19]: 11010001 -> d1
+  Data[20]: 00110111 -> 37
+  Data[21]: 00100111 -> 27
+  Data[22]: 10011011 -> 9b
+  Data[23]: 10001110 -> 8e
+  Data[24]: 11110111 -> f7
+  Data[25]: 10001011 -> 8b
+
+Address #73: 111010
+RDWR Bit: 1
+Stream Bit: 1
+Stream Length: 5 (binary: 00000101)
+  Data[0]: 00000110 -> 06
+  Data[1]: 01101110 -> 6e
+  Data[2]: 11000101 -> c5
+  Data[3]: 00001011 -> 0b
+  Data[4]: 00101101 -> 2d
+
+Address #77: 111101
+RDWR Bit: 1
+Stream Bit: 1
+Stream Length: 19 (binary: 00010011)
+  Data[0]: 01000100 -> 44
+  Data[1]: 10000110 -> 86
+  Data[2]: 01011111 -> 5f
+  Data[3]: 10101000 -> a8
+  Data[4]: 01101010 -> 6a
+  Data[5]: 00111010 -> 3a
+  Data[6]: 01110100 -> 74
+  Data[7]: 00010001 -> 11
+  Data[8]: 10011100 -> 9c
+  Data[9]: 11110001 -> f1
+  Data[10]: 11011110 -> de
+  Data[11]: 01101001 -> 69
+  Data[12]: 00001110 -> 0e
+  Data[13]: 11010001 -> d1
+  Data[14]: 01001011 -> 4b
+  Data[15]: 00001000 -> 08
+  Data[16]: 10010011 -> 93
+  Data[17]: 01000110 -> 46
+  Data[18]: 11101111 -> ef
+
+Address #87: 111111
+RDWR Bit: 1
+Stream Bit: 0
+Exchange: 00111011
+
+Address #88: 101111
+RDWR Bit: 0
+Stream Bit: 1
+Stream Length: 8 (binary: 00001000)
+  Data[0]: 01001000 -> 48
+  Data[1]: 00110000 -> 30
+  Data[2]: 00101000 -> 28
+  Data[3]: 11110100 -> f4
+  Data[4]: 11000110 -> c6
+  Data[5]: 11110111 -> f7
+  Data[6]: 00100101 -> 25
+  Data[7]: 00110000 -> 30
+
+Address #93: 001000
+RDWR Bit: 1
+Stream Bit: 0
+Exchange: 01111011
+
+Address #94: 010100
+RDWR Bit: 1
+Stream Bit: 0
+Exchange: 11110110
+
+Address #95: 111101
+RDWR Bit: 0
+Stream Bit: 0
+Exchange: 00000011
+
+Address #96: 001111
+RDWR Bit: 0
+Stream Bit: 0
+Exchange: 00110111
+
+Address #97: 100100
+RDWR Bit: 0
+Stream Bit: 0
+Exchange: 11101110
+
+Address #98: 111001
+RDWR Bit: 0
+Stream Bit: 0
+Exchange: 10000000
+
+Address #99: 100011
+RDWR Bit: 1
+Stream Bit: 0
+Exchange: 10001010
+
+Address #100: 101101
+RDWR Bit: 0
+Stream Bit: 0
+Exchange: 00010111
+
+Address #101: 001001
+RDWR Bit: 0
+Stream Bit: 0
+Exchange: 10101011
+
+Address #102: 010000
+RDWR Bit: 1
+Stream Bit: 0
+Exchange: 10111001
+
+Address #103: 000001
+RDWR Bit: 0
+Stream Bit: 0
+Exchange: 11011110
+
+Address #104: 011101
+RDWR Bit: 1
+Stream Bit: 1
+Stream Length: 1 (binary: 00000001)
+  Data[0]: 11010001 -> d1
+
+Address #106: 011101
+RDWR Bit: 1
+Stream Bit: 1
+Stream Length: 6 (binary: 00000110)
+  Data[0]: 10110111 -> b7
+  Data[1]: 00110000 -> 30
+  Data[2]: 11110101 -> f5
+  Data[3]: 01010111 -> 57
+  Data[4]: 00001010 -> 0a
+  Data[5]: 00110010 -> 32
+
+Address #110: 010110
+RDWR Bit: 0
+Stream Bit: 0
+Exchange: 11000000
+
+Address #111: 101100
+RDWR Bit: 1
+Stream Bit: 0
+Exchange: 11001110
+
+Address #112: 101111
+RDWR Bit: 0
+Stream Bit: 0
+Exchange: 11010011
+
+Address #113: 100101
+RDWR Bit: 1
+Stream Bit: 0
+Exchange: 10110110
+
+Address #114: 101001
+RDWR Bit: 0
+Stream Bit: 0
+Exchange: 10110101
+
+Address #115: 010010
+RDWR Bit: 0
+Stream Bit: 0
+Exchange: 00011101
+
+Address #116: 001111
+RDWR Bit: 1
+Stream Bit: 0
+Exchange: 01101011
+
+Address #117: 011110
+RDWR Bit: 1
+Stream Bit: 0
+Exchange: 01110001
+
+Address #118: 110000
+RDWR Bit: 0
+Stream Bit: 0
+Exchange: 10000000
+
+Address #119: 001010
+RDWR Bit: 1
+Stream Bit: 1
+Stream Length: 11 (binary: 00001011)
+  Data[0]: 11011010 -> da
+  Data[1]: 01111110 -> 7e
+  Data[2]: 00110100 -> 34
+  Data[3]: 00111000 -> 38
+  Data[4]: 11110101 -> f5
+  Data[5]: 01100001 -> 61
+  Data[6]: 11010111 -> d7
+  Data[7]: 10011001 -> 99
+  Data[8]: 10011000 -> 98
+  Data[9]: 11101011 -> eb
+  Data[10]: 10010001 -> 91
+
+Address #125: 100001
+RDWR Bit: 1
+Stream Bit: 1
+Stream Length: 26 (binary: 00011010)
+  Data[0]: 00000111 -> 07
+  Data[1]: 01100100 -> 64
+  Data[2]: 00101110 -> 2e
+  Data[3]: 00000010 -> 02
+  Data[4]: 00000011 -> 03
+  Data[5]: 10100100 -> a4
+  Data[6]: 11001100 -> cc
+  Data[7]: 01011011 -> 5b
+  Data[8]: 00011000 -> 18
+  Data[9]: 00111110 -> 3e
+  Data[10]: 11100001 -> e1
+  Data[11]: 10111100 -> bc
+  Data[12]: 10110110 -> b6
+  Data[13]: 00100011 -> 23
+  Data[14]: 11011101 -> dd
+  Data[15]: 00101100 -> 2c
+  Data[16]: 11010010 -> d2
+  Data[17]: 10111000 -> b8
+  Data[18]: 11101001 -> e9
+  Data[19]: 11011101 -> dd
+  Data[20]: 10001011 -> 8b
+  Data[21]: 01010010 -> 52
+  Data[22]: 00101101 -> 2d
+  Data[23]: 01011010 -> 5a
+  Data[24]: 11011011 -> db
+  Data[25]: 10000010 -> 82
+
+Address #139: 100101
+RDWR Bit: 0
+Stream Bit: 1
+Stream Length: 31 (binary: 00011111)
+  Data[0]: 11010101 -> d5
+  Data[1]: 11101001 -> e9
+  Data[2]: 10111000 -> b8
+  Data[3]: 01000001 -> 41
+  Data[4]: 01001101 -> 4d
+  Data[5]: 10001100 -> 8c
+  Data[6]: 00010001 -> 11
+  Data[7]: 00100111 -> 27
+  Data[8]: 01110000 -> 70
+  Data[9]: 00010100 -> 14
+  Data[10]: 11001111 -> cf
+  Data[11]: 00000011 -> 03
+  Data[12]: 10110111 -> b7
+  Data[13]: 01011100 -> 5c
+  Data[14]: 11010100 -> d4
+  Data[15]: 01010010 -> 52
+  Data[16]: 10100101 -> a5
+  Data[17]: 10010100 -> 94
+  Data[18]: 00101011 -> 2b
+  Data[19]: 01010110 -> 56
+  Data[20]: 11100101 -> e5
+  Data[21]: 01101000 -> 68
+  Data[22]: 01000101 -> 45
+  Data[23]: 11101100 -> ec
+  Data[24]: 10001001 -> 89
+  Data[25]: 10110100 -> b4
+  Data[26]: 00100010 -> 22
+  Data[27]: 00101010 -> 2a
+  Data[28]: 00011001 -> 19
+  Data[29]: 10111101 -> bd
+  Data[30]: 00100011 -> 23
+
+Address #156: 100001
+RDWR Bit: 0
+Stream Bit: 1
+Stream Length: 6 (binary: 00000110)
+  Data[0]: 00010001 -> 11
+  Data[1]: 11000100 -> c4
+  Data[2]: 10100101 -> a5
+  Data[3]: 01101000 -> 68
+  Data[4]: 01110111 -> 77
+  Data[5]: 01111110 -> 7e
+
+Address #160: 010100
+RDWR Bit: 1
+Stream Bit: 0
+Exchange: 11001111
+
+Address #161: 111101
+RDWR Bit: 1
+Stream Bit: 0
+Exchange: 01101101
+
+Address #162: 011101
+RDWR Bit: 0
+Stream Bit: 1
+Stream Length: 31 (binary: 00011111)
+  Data[0]: 00001100 -> 0c
+  Data[1]: 10010110 -> 96
+  Data[2]: 00110100 -> 34
+  Data[3]: 00000011 -> 03
+  Data[4]: 11010010 -> d2
+  Data[5]: 00111001 -> 39
+  Data[6]: 00111000 -> 38
+  Data[7]: 10101110 -> ae
+  Data[8]: 01100101 -> 65
+  Data[9]: 00000100 -> 04
+  Data[10]: 11110001 -> f1
+  Data[11]: 00000001 -> 01
+  Data[12]: 00010001 -> 11
+  Data[13]: 11001001 -> c9
+  Data[14]: 01100000 -> 60
+  Data[15]: 10110110 -> b6
+  Data[16]: 10000100 -> 84
+  Data[17]: 01011001 -> 59
+  Data[18]: 00000110 -> 06
+  Data[19]: 10011010 -> 9a
+  Data[20]: 10110111 -> b7
+  Data[21]: 10110001 -> b1
+  Data[22]: 10110010 -> b2
+  Data[23]: 11111011 -> fb
+  Data[24]: 01000100 -> 44
+  Data[25]: 00110110 -> 36
+  Data[26]: 10001001 -> 89
+  Data[27]: 11110100 -> f4
+  Data[28]: 01100001 -> 61
+  Data[29]: 00001101 -> 0d
+  Data[30]: 10010111 -> 97
+
+Address #178: 101110
+RDWR Bit: 0
+Stream Bit: 0
+Exchange: 10101110
+
+Address #179: 111001
+RDWR Bit: 1
+Stream Bit: 0
+Exchange: 10001011
+
+Address #180: 110100
+RDWR Bit: 1
+Stream Bit: 0
+Exchange: 10110110
+
+Address #181: 101101
+RDWR Bit: 1
+Stream Bit: 1
+Stream Length: 1 (binary: 00000001)
+  Data[0]: 10110101 -> b5
+
+Address #183: 001111
+RDWR Bit: 1
+Stream Bit: 1
+Stream Length: 11 (binary: 00001011)
+  Data[0]: 10100011 -> a3
+  Data[1]: 01011010 -> 5a
+  Data[2]: 11100111 -> e7
+  Data[3]: 11111010 -> fa
+  Data[4]: 10001010 -> 8a
+  Data[5]: 11001101 -> cd
+  Data[6]: 10011011 -> 9b
+  Data[7]: 11101110 -> ee
+  Data[8]: 11011011 -> db
+  Data[9]: 00100111 -> 27
+  Data[10]: 01001110 -> 4e
+
+Address #189: 011010
+RDWR Bit: 1
+Stream Bit: 0
+Exchange: 01110100
+
+Address #190: 000111
+RDWR Bit: 0
+Stream Bit: 0
+Exchange: 00111111
+
+Address #191: 110100
+RDWR Bit: 0
+Stream Bit: 1
+Stream Length: 24 (binary: 00011000)
+  Data[0]: 01010000 -> 50
+  Data[1]: 00011101 -> 1d
+  Data[2]: 11111111 -> ff
+  Data[3]: 10000010 -> 82
+  Data[4]: 00101100 -> 2c
+  Data[5]: 01101100 -> 6c
+  Data[6]: 01001101 -> 4d
+  Data[7]: 10110100 -> b4
+  Data[8]: 00001110 -> 0e
+  Data[9]: 00110110 -> 36
+  Data[10]: 01111111 -> 7f
+  Data[11]: 01101000 -> 68
+  Data[12]: 10010110 -> 96
+  Data[13]: 01000000 -> 40
+  Data[14]: 10111000 -> b8
+  Data[15]: 00101010 -> 2a
+  Data[16]: 10100010 -> a2
+  Data[17]: 01011111 -> 5f
+  Data[18]: 10110010 -> b2
+  Data[19]: 11010110 -> d6
+  Data[20]: 01110111 -> 77
+  Data[21]: 00011111 -> 1f
+  Data[22]: 01110101 -> 75
+  Data[23]: 00100000 -> 20
+
+Address #204: 000100
+RDWR Bit: 1
+Stream Bit: 0
+Exchange: 00011001
+
+Address #205: 011110
+RDWR Bit: 1
+Stream Bit: 0
+Exchange: 01000011
